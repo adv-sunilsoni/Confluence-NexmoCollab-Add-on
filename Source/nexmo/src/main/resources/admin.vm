@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <title>$i18n.getText("nexmo.admin.label")</title>
+    <meta name="decorator" content="atl.admin" />
+    $webResourceManager.requireResource("com.nexmo.nexmosms:resources")
+    $webResourceManager.requireResource("com.nexmo.nexmosms:nexmo-resources")
+    <meta name="application-base-url" content="$applicationProperties.getBaseUrl()">
+ 
+  </head>
+  <body>
+  	<div class="logoWrapper" align="center"><img src="$req.contextPath/download/resources/com.nexmo.nexmosms:nexmo-resources/images/logo.png" alt="Nexmo" width="200"></div>
+   <div id="upm-incompatible-plugins-msg" class="aui-message warning">
+            <div id="upm-base-url-invalid" class="aui-message error hidden">
+            <span class="aui-icon icon-error"></span>
+           
+        </div><span class="aui-icon icon-error"></span>
+            <p id="error" name="error"></p>
+       </div> 
+  <div id="defaults" class="pageWrapper">
+ 	
+ 
+ 	
+ 
+  	<div class="mainContent">
+  	
+    <form id="admin" class="aui">
+     
+    
+    
+    
+   	 <div class="mb-20">
+				<div class="fieldLabel">Nexmo Key <span class="handCursor"></span></div>
+				<div>
+					 <input id="key" name="key"  type="text" class="customTxtBox" />
+				</div>
+	</div>
+    
+    
+    <div class="mb-20">
+				<div class="fieldLabel">Nexmo Secret <span class="handCursor"></div>
+				<div>
+					 <input id="secret" name="secret" type="text" class="customTxtBox" />
+				</div>
+				
+				
+				<div>  <input class="blueBtn" id="validatekeys" type="submit" value="Validate"></div>
+	</div>
+	
+	
+	<div id="aftervalidation">
+	
+	<div class="mb-20">
+				<div class="fieldLabel">From Number<span class="handCursor"></div>
+				<div>
+					<select class="customdropdown"  name="fromNumbers" id="fromNumbers">
+		              </select></br>
+		              
+				</div>
+				
+	</div>
+	
+	
+	<div class="mb-20">
+				<div class="fieldLabel">All Spaces <span class="handCursor"></div>
+				<div>
+					<select class="customList" size="3"  name="listspace" id="listspace">
+  				
+  					#foreach ($space in  $spaceManager.getAllSpaces())
+   						<option value="$space.getKey()">$space.getName()</option>			
+					#end
+		              </select></br>
+		              <input class="blueBtn" type="button" id="add" name="add" value="$i18n.getText("nexmo.admin.addtolist.label")"> 
+				</div>
+				
+	</div>
+	
+	
+	<div class="mb-20">
+				<div class="fieldLabel">Selected Spaces <span class="handCursor"></div>
+				<div>
+				
+				<select size="3" class="customList" name="selectedspace" id="selectedspace">
+				</select></br>
+				<input type="button" id="remove" name="remove" value="$i18n.getText("nexmo.admin.removefromlist.label")" class="blueBtn">	
+				</div>
+				
+	  </div>
+    
+    
+            
+            <div class="mb-20">
+				<div class="font16"><b>Enable SMS</b><input type="checkbox" id="smsenable" name="smsenable" class="customCheckBox"></div>
+			</div>
+			
+		   	
+		   <div id="eventspanel" class="eventspan">	
+           <div class="mb-20">
+				<div class="font16">$i18n.getText("nexmo.admin.enablecreateevent.label") <input type="checkbox" id="pagecreateevent" name="pagecreateevent" class="customCheckBox"></div>
+			</div>
+           
+            
+            <div class="mb-20">
+				<div class="font16">$i18n.getText("nexmo.admin.enableupdateevent.label") <input type="checkbox" id="pageupdateevent" name="pageupdateevent" class="customCheckBox"></div>
+			</div>
+			
+			</div>
+			
+			
+			
+            
+           <div>  <input class="blueBtn" type="submit" value="$i18n.getText("nexmo.admin.save.label")"></div>
+            
+            
+            
+            
+            </div>
+            
+            
+              <table class="tableStyle">
+             <tr>
+               
+                <td class="auto-style1">
+                    <input id="thresholdamount" name="thresholdamount" type="hidden"  />
+                </td>
+            </tr>
+            
+            
+            <tr id="messagecreate"> 
+             <td class="auto-style2">
+                  
+                </td>
+                
+                <td  class="auto-style2">   <input type="hidden" id="pagecreateeventmessage" name="pagecreateeventmessage">  </td>
+            </tr>
+           
+            
+             
+            
+            
+            
+            <tr id="messageupdate">
+            
+            <td class="auto-style2">
+                   
+                </td>
+                
+                <td  class="auto-style2">   <input type="hidden" id="pageupdateeventmessage" name="pageupdateeventmessage">  </td>
+            </tr>
+            
+     	
+             <tr>
+                
+                <td class="auto-style1">
+                    <input id="fromuser" name="fromuser" type="hidden" />
+                </td>
+            </tr>
+        </table>
+    
+    
+     
+    </form>
+	</div>
+</div>
+
+<div id="progressSpinner" style="z-index:1000;position:absolute; top: 20%;left: 30%; background:rgba(255,255,255,1) none repeat scroll 0% 0%; padding: 20px;overflow:auto;border:1px solid; display: block; background-color: #FFFFCC; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: small; font-weight: bold; color: #333399; display:none">
+        <p id="progressText">
+        </p>
+    </div>
+  </body>
+</html>
