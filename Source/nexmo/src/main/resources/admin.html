@@ -1,0 +1,230 @@
+<html>
+  <head>
+    <title>$i18n.getText("nexmo.admin.label")</title>
+    <meta name="decorator" content="atl.admin" />
+    $webResourceManager.requireResource("com.advaiya.nexmo:resources")
+    <meta name="application-base-url" content="$applicationProperties.getBaseUrl()">
+ 
+  </head>
+  <body>
+  <div id="defaults" class="pageWrapper">
+ 	<div class="logoWrapper"><img src="images\logo.png" alt="Nexmo" width="200"></div>
+  <div id="upm-incompatible-plugins-msg" class="aui-message warning closeable">
+            <div id="upm-base-url-invalid" class="aui-message error hidden">
+            <span class="aui-icon icon-error"></span>
+           
+        </div><span class="aui-icon icon-error"></span>
+            <div id="error" name="error"></div>
+        <span class="aui-icon icon-close" role="button" tabindex="0"></span></div> 
+  	
+    <form id="admin" class="aui">
+     
+    
+      <table class="tableStyle">
+           
+            
+            
+            <tr>
+                <td class="auto-style2">
+                    <label for="key">
+                        Nexmo Key:</label>
+                </td>
+                <td class="auto-style1">
+                    <input id="key" name="key"  type="text"  />
+                </td>
+            </tr>
+             
+            <tr>
+                <td class="auto-style2">
+                    <label for="secret">
+                        Nexmo Secret:</label>
+                </td>
+                <td class="auto-style1">
+                    <input id="secret" name="secret" type="text"  />
+                </td>
+            </tr>
+            
+    
+            <tr>
+                
+                <td class="auto-style1">
+                    <input id="fromuser" name="fromuser" type="text" />
+                </td>
+            </tr>
+            
+            
+           
+            
+            <tr>
+               
+                <td class="auto-style1">
+                    <input id="thresholdamount" name="thresholdamount" type="text"  />
+                </td>
+            </tr>
+            
+            
+            
+             <tr>
+                <td class="auto-style2">
+                   <label for="listspace">$i18n.getText("nexmo.admin.listspace.label")</label>
+                </td>
+                <td class="auto-style1">
+                      <select size="10" class="select" name="listspace" id="listspace">
+  				
+  					#foreach ($space in  $spaceManager.getAllSpaces())
+   						<option value="$space.getKey()">$space.getName()</option>			
+					#end
+		</select>
+		
+		
+                </td>
+                <td  valign="bottom"> <input type="button" id="add" name="add" value="$i18n.getText("nexmo.admin.addtolist.label")" class="blueBtn"></td>
+            </tr>
+            
+            
+            
+             <tr>
+                <td class="auto-style2">
+                <label for="selectedspace">$i18n.getText("nexmo.admin.selectedspace.label")</label>
+                </td>
+                <td class="auto-style1">
+                       <select size="10" class="select" name="selectedspace" id="selectedspace">
+  				
+  					
+		</select>
+		
+		
+                </td>
+                <td  valign="bottom">   <input type="button" id="remove" name="remove" value="$i18n.getText("nexmo.admin.removefromlist.label")" class="blueBtn"></td>
+            </tr>
+            
+            
+           
+            
+              <tr>
+                <td class="auto-style2">
+                    <label for="pagecreateevent">$i18n.getText("nexmo.admin.enablecreateevent.label")</label>
+                </td>
+                <td class="auto-style1" align="left">
+                 <input type="checkbox" id="pagecreateevent" name="pagecreateevent" class="customCheckBox">
+                  
+                </td>
+                
+            </tr>
+            
+            
+             <td class="auto-style2">
+                    <label for="pagecreateeventmessage">Message for Page Create Event</label>
+                </td>
+                
+                <td  class="auto-style2">   <input type="text" id="pagecreateeventmessage" name="pagecreateeventmessage">  </td>
+            </tr>
+           
+            
+             
+            <tr>
+                <td class="auto-style2">
+                    <label for="pageupdateevent">$i18n.getText("nexmo.admin.enableupdateevent.label")</label>
+                </td>
+                <td class="auto-style1" align="left">
+                <input type="checkbox" id="pageupdateevent" name="pageupdateevent" class="customCheckBox">
+                 
+                  
+                </td>
+               
+            </tr>
+            
+            
+            <tr>
+            
+            <td class="auto-style2">
+                    <label for="pageupdateeventmessage">Message for Page Update Event</label>
+                </td>
+                
+                <td  class="auto-style2">   <input type="text" id="pageupdateeventmessage" name="pageupdateeventmessage">  </td>
+            </tr>
+            
+     	
+            
+               <tr>
+                <td class="auto-style2">
+                    <label for="pageupdateevent">$i18n.getText("nexmo.admin.onremoveevent.label")</label>
+                </td>
+                <td class="auto-style1" align="left">
+                 <input type="checkbox" id="pageremoveevent" name="pageremoveevent" class="customCheckBox">
+              
+                 
+                  
+                </td>
+                
+            </tr>
+            
+             <tr>
+            
+            <td class="auto-style2">
+                    <label for="pageremoveeventmessage">Message for Page Remove Event</label>
+                </td>
+                
+                <td  class="auto-style2">    <input type="text" id="pageremoveeventmessage" name="pageremoveeventmessage" >  </td>
+            </tr>
+            
+            
+     	
+            
+            
+            <tr>
+                <td class="auto-style2">
+                     <label for="smsenable">$i18n.getText("nexmo.admin.enablecheck.label")</label>
+                </td>
+                <td class="auto-style1" align="left">
+                 <input type="checkbox" id="smsenable" name="smsenable" class="customCheckBox">
+                  
+                </td>
+            </tr>
+            
+            
+            
+            
+     
+            
+            <tr>
+			<td class="auto-style2">&nbsp;</td>
+                <td class="auto-style1">
+                    <div>
+                      <input type="submit" value="$i18n.getText("nexmo.admin.save.label")" class="blueBtn">
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
+    
+    
+    
+     
+      
+     
+     
+      
+     
+    
+      
+      
+    
+      
+       
+      
+      
+      
+        
+      
+     
+     	
+     	
+     	
+     	
+      
+    </form>
+	
+</div>
+  </body>
+</html>
